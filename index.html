@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search - OMDb Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎬 Movie Search</h1>
+            <p class="subtitle">Discover movies with OMDb API</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="search-section">
+                <div class="search-form">
+                    <input 
+                        type="text" 
+                        id="query" 
+                        placeholder="Enter movie title (e.g., The Dark Knight, Inception)"
+                        maxlength="50"
+                    >
+                    <button id="searchBtn" class="search-btn">
+                                                <span class="btn-icon"><i class="fas fa-search"></i></span>
+
+                        <span class="btn-text">Search</span>
+
+                        <span class="btn-loading" style="display: none;">
+                            <span class="spinner"></span>
+                            Searching...
+                        </span>
+                    </button>
+                </div>
+                <div id="searchStats" class="search-stats"></div>
+            </div>
+
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            
+            <div id="movies" class="movies-grid"></div>
+            
+            <div id="loadingSpinner" class="loading-container" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p>Searching for movies...</p>
+            </div>
+            
+            <div class="api-notice">
+                <p>⚠️ <strong>API Key Required:</strong> Get your free OMDb API key from <a href="http://www.omdbapi.com/apikey.aspx" target="_blank">omdbapi.com</a> and add it to app.js</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Movie Detail Modal -->
+    <div id="movieModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="movieDetails" class="movie-details"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Movie Search App. Powered by OMDb API.</p>
+        </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
