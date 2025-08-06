@@ -321,7 +321,9 @@ async function fetchMovieDetails(imdbID) {
 function displayMovieDetails(movie) {
     const poster = movie.Poster !== 'N/A' ? movie.Poster : "/public/images/cinema.webp";
     const posterHTML = poster 
-        ? `<img src="${poster || '/public/images/cinema.webp'}"   alt="${movie.Title} poster" class="detail-poster">`
+        ? `<img src="${poster || '/public/images/cinema.webp'}"   
+        alt="${movie.Title} poster" class="detail-poster
+          onerror="this.onerror=null; this.src='/public/images/cinema.webp'">`
         : `<div class="poster-placeholder" style="width: 300px; height: 400px; font-size: 3rem;">🎬<br>No Image</div>`;
     
     const detailsHTML = `
