@@ -233,11 +233,17 @@ function displayMovies(movies) {
  * @returns {string} HTML string for the movie card
  */
 function createMovieCard(movie) {
-    const poster = movie.Poster !== 'N/A' ? movie.Poster : null;
-    const posterHTML = poster 
-        ? `<img src="${poster}" alt="${movie.Title} poster" class="movie-poster" loading="lazy">`
-        : `<div class="poster-placeholder">🎬<br>No Image</div>`;
-    
+    const poster = movie.Poster !== 'N/A' ? movie.Poster :"/public/images/cinema.webp";
+   const posterHTML = poster 
+  ? `<img 
+      src="${poster}" 
+      alt="${movie.Title} poster" 
+      class="movie-poster" 
+      loading="lazy" 
+      onerror="this.onerror=null; this.src='/public/images/cinema.webp';"
+    >`
+  : `<div class="poster-placeholder">🎬<br>No Image</div>`;
+
     return `
         <div class="movie-card" data-imdb-id="${movie.imdbID}" tabindex="0" role="button" aria-label="View details for ${movie.Title}">
             <div class="movie-poster-container">
@@ -313,9 +319,9 @@ async function fetchMovieDetails(imdbID) {
  * @param {Object} movie - Detailed movie data from API
  */
 function displayMovieDetails(movie) {
-    const poster = movie.Poster !== 'N/A' ? movie.Poster : null;
+    const poster = movie.Poster !== 'N/A' ? movie.Poster : "/public/images/cinema.webp";
     const posterHTML = poster 
-        ? `<img src="${poster}" alt="${movie.Title} poster" class="detail-poster">`
+        ? `<img src="${poster || '/public/images/cinema.webp'}"   alt="${movie.Title} poster" class="detail-poster">`
         : `<div class="poster-placeholder" style="width: 300px; height: 400px; font-size: 3rem;">🎬<br>No Image</div>`;
     
     const detailsHTML = `
